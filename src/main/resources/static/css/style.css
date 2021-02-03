@@ -8,6 +8,17 @@ body {
     overflow: hidden;
 }
 
+.error {
+    display: block;
+    background-color: rgb(216, 56, 35);
+    color: white;
+    font-size: xx-large;
+    margin-left: 45%;
+    margin-top: 5%;
+    width: max-content;
+    border-radius: 2px;
+}
+
 .linkStyle {
     font-size:xx-large;
     float: left;
@@ -24,6 +35,7 @@ body {
     margin-left: 45%;
     padding: 10px;
     background-color: rgb(55, 0, 255);
-    width: 10%;
+    width: max-content;
+    border-radius: 2px;
     height: 10%;
 }

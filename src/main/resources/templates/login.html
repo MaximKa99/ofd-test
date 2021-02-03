@@ -3,6 +3,7 @@
         <title>Login</title>
         <link rel="stylesheet" media="all" type="text/css" href="css/style.css" />
         <script src="js/login.js"></script>
+        <script src="js/printError.js"></script>
     </head>
     <body>
         <div id="header" class="headerStyle" style="clear: both;">
@@ -20,9 +21,12 @@
             </a>
         </div>
         <div id="LoginForm" class="loginForm">
-            <input id="login" ></br></br>
+            <input id="login"></br></br>
             <input id="password" type="password"></br></br>
             <button style="float: right; width: 50px; height: 25px;" onclick="login()">Логин</button>
+        </div>
+        <div id="error" class="error">
+
         </div>
     </body>
 </html>
