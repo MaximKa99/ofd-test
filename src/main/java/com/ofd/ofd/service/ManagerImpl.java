@@ -3,7 +3,6 @@ package com.ofd.ofd.service;
 import com.ofd.ofd.dao.DAO;
 import com.ofd.ofd.exception.AlreadyExistsUserException;
 import com.ofd.ofd.exception.WrongPasswordException;
-import com.ofd.ofd.model.LoginForm;
 import com.ofd.ofd.model.NewUser;
 import com.ofd.ofd.model.User;
 

@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ofd.ofd.controller.ExceptionController;
-import com.ofd.ofd.model.UserDetail;
 import com.ofd.ofd.service.JwtProvider;
 import com.ofd.ofd.service.UserService;
 import com.ofd.ofd.view.ErrorResponse;
