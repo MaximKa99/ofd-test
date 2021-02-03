@@ -22,7 +22,7 @@ function getUser() {
             document.getElementById("login").innerHTML = login
         }
         if (this.status == 500) {
-            console.log(JSON.parse(this.responseText))
+            alert(JSON.parse(this.responseText).message)
         }
     }
     request.send();
