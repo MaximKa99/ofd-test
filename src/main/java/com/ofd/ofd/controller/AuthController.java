@@ -7,11 +7,8 @@ import com.ofd.ofd.service.Manager;
 import com.ofd.ofd.view.ViewAuthRequest;
 import com.ofd.ofd.view.ViewAuthResponse;
 import com.ofd.ofd.view.ViewLoginForm;
-import com.ofd.ofd.view.ViewNewUser;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;

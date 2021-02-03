@@ -3,6 +3,7 @@ package com.ofd.ofd.view;
 public class ViewAuthResponse {
     private String token;
     private String id;
+    private final int status = 0;
 
     public ViewAuthResponse(String token, String id) {
         this.token = token;

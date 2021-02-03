@@ -24,17 +24,22 @@ public class ExceptionController {
         res.setUUID(uuid);
         res.setMessage(e.getMessage());
         if (e instanceof NoSuchUserException) {
+            res.setStatus(3);
             return new ResponseEntity<>(res, HttpStatus.NOT_FOUND);
         }
         if (e instanceof AlreadyExistsUserException) {
+            res.setStatus(1);
             return new ResponseEntity<>(res, HttpStatus.BAD_REQUEST);
         }
         if (e instanceof WrongPasswordException) {
+            res.setStatus(4);
             return new ResponseEntity<>(res, HttpStatus.UNAUTHORIZED);
         }
         if (e instanceof SmthGoneWrongException) {
+            res.setStatus(2);
             return new ResponseEntity<>(res, HttpStatus.INTERNAL_SERVER_ERROR);
         } else {
+            res.setStatus(2);
             return new ResponseEntity<>(res, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }

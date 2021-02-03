@@ -3,6 +3,7 @@ package com.ofd.ofd.view;
 public class ViewUser {
     private String login;
     private Integer balance;
+    private final int status = 0;
 
     public ViewUser(String login, Integer balance) {
         this.login = login;
