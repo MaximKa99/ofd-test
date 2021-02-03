@@ -17,7 +17,9 @@ function getUser() {
     request.onreadystatechange = function () {
         if (this.status == 200) {
             var balance = JSON.parse(this.responseText).balance
+            var login = JSON.parse(this.responseText).login
             document.getElementById("balance").innerHTML = balance
+            document.getElementById("login").innerHTML = login
         }
         if (this.status == 500) {
             console.log(JSON.parse(this.responseText))

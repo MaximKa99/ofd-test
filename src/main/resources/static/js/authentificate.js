@@ -13,6 +13,12 @@ function authentificate() {
             document.cookie = "userId=" + JSON.parse(this.responseText).id
             location.replace("http://localhost:8080/profile");
         }
+        if (this.status == 401) {
+            alert("Неверный пароль!");
+        }
+        if (this.status == 400) {
+            alert("Такой пользователь уже зарегистрирован!");
+        }
         if (this.status == 500) {
             console.log(JSON.parse(this.responseText))
         }

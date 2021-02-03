@@ -8,15 +8,18 @@ function register() {
     request.onreadystatechange = function () {
         if (this.readyState == 4) {
             if (this.status == 200) {
-            // document.cookie = "token="+ JSON.parse(this.responseText).token
-            // console.log(document.cookie)
-                console.log(this.responseText)
+                document.cookie = "Authorization=" + JSON.parse(this.responseText).token
+                document.cookie = "userId=" + JSON.parse(this.responseText).id
+                location.replace("http://localhost:8080/profile");
             }
             if (this.status == 500) {
                 console.log(JSON.parse(this.responseText))
             }
             if (this.status == 400) {
-                console.log(JSON.parse(this.responseText))
+                alert("Такой пользователь уже зарегистрирован!");
+            }
+            if (this.status == 401) {
+                alert("Неверный пароль!");
             }
         }
     }

@@ -1,6 +1,5 @@
 package com.ofd.ofd.controller;
 
-import java.sql.SQLException;
 import java.util.UUID;
 
 import com.ofd.ofd.exception.AlreadyExistsUserException;
@@ -31,7 +30,7 @@ public class ExceptionController {
             return new ResponseEntity<>(res, HttpStatus.BAD_REQUEST);
         }
         if (e instanceof WrongPasswordException) {
-            return new ResponseEntity<>(res, HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(res, HttpStatus.UNAUTHORIZED);
         }
         if (e instanceof SmthGoneWrongException) {
             return new ResponseEntity<>(res, HttpStatus.INTERNAL_SERVER_ERROR);

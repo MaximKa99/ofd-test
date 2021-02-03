@@ -6,8 +6,9 @@ public class User {
     private String password;
     private Integer balance;
 
-    public User(String login, String password, Integer balance) {
+    public User(String id, String login, String password, Integer balance) {
         this.login = login;
+        this.id = id;
         this.password = password;
         this.balance = balance;
     }

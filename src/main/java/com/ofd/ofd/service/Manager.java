@@ -5,13 +5,13 @@ import com.ofd.ofd.model.User;
 
 public interface Manager {
     
-    public int addNewUser(NewUser newUser);
+    public User addNewUser(NewUser newUser);
 
     public User findUserByLogin(String login);
 
     public User findUserById(Integer id);
 
-    public void login(String login, String password);
+    public User login(String login, String password);
 
     
 }

@@ -20,7 +20,7 @@ public class ManagerImpl implements Manager {
     }
 
     @Override
-    public int addNewUser(NewUser newUser) {
+    public User addNewUser(NewUser newUser) {
         if (!dao.checkExistingUser(newUser)) {
             return dao.addNewUser(newUser);
         } else {
@@ -41,10 +41,11 @@ public class ManagerImpl implements Manager {
     }
 
     @Override
-    public void login(String login, String password) {
+    public User login(String login, String password) {
         User user = dao.findUserByLogin(login);
         if (!user.getPassword().equals(password)) {
             throw new WrongPasswordException();
         }
+        return user;
     }
 }

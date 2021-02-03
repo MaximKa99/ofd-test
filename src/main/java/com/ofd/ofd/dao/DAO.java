@@ -10,7 +10,7 @@ public interface DAO {
 
     public User findUserById(Integer id) throws NoSuchUserException;
 
-    public int addNewUser(NewUser newUser) throws AlreadyExistsUserException;
+    public User addNewUser(NewUser newUser) throws AlreadyExistsUserException;
 
     public boolean checkExistingUser(NewUser newUser);
 }

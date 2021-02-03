@@ -25,9 +25,7 @@ public class UserController {
     @GetMapping("/{id}")
     public ResponseEntity<ViewUser> getUserById(@PathVariable int id) {
         User user = manager.findUserById(id);
-        ViewUser viewUser = new ViewUser();
-        viewUser.setLogin(user.getLogin());
-        viewUser.setBalance(user.getBalance());
+        ViewUser viewUser = new ViewUser(user.getLogin(), user.getBalance());
         return new ResponseEntity<ViewUser>(viewUser, HttpStatus.OK);
     }
 }

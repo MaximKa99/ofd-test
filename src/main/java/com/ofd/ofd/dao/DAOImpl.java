@@ -38,6 +38,7 @@ public class DAOImpl implements DAO {
             statement.setString(1, newUser.getLogin());
             ResultSet result = statement.executeQuery();
             if (!result.next()) {
+                result.close();
                 return false;
             }
         } catch (SQLException ex) {
@@ -47,7 +48,8 @@ public class DAOImpl implements DAO {
     }
 
     @Override
-    public int addNewUser(NewUser newUser) throws AlreadyExistsUserException {
+    public User addNewUser(NewUser newUser) throws AlreadyExistsUserException {
+        User user = null;
         try (PreparedStatement statement = connection
                 .prepareStatement("insert into USER(login, password) values(?, ?)")) {
             statement.setString(1, newUser.getLogin());
@@ -56,16 +58,7 @@ public class DAOImpl implements DAO {
         } catch (SQLException e) {
             throw new SmthGoneWrongException(e.getMessage());
         }
-        int id;
-        try (PreparedStatement statement = connection.prepareStatement("select id from USER where login=?")) {
-            statement.setString(1, newUser.getLogin());
-            ResultSet result = statement.executeQuery();
-            result.next();
-            id = Integer.valueOf(result.getString(1));
-        } catch (SQLException e) {
-            throw new SmthGoneWrongException(e.getMessage());
-        }
-        return id;
+        return findUserByLogin(newUser.getLogin());
     }
 
     @Override
@@ -79,9 +72,9 @@ public class DAOImpl implements DAO {
                 String password = result.getString("password");
                 String balance = result.getString("balance");
                 String id = result.getString("id");
-                user = new User(login, password, Integer.parseInt(balance));
-                user.setId(id);
+                user = new User(id, login, password, Integer.parseInt(balance));
             }
+            result.close();
         } catch (SQLException ex) {
             throw new SmthGoneWrongException(ex.getMessage());
         }
@@ -103,9 +96,9 @@ public class DAOImpl implements DAO {
                 String password = result.getString("password");
                 String userId = result.getString("id");
                 int balance = Integer.parseInt(result.getString("balance"));
-                user = new User(login, password, balance);
-                user.setId(userId);
+                user = new User(userId, login, password, balance);
             }
+            result.close();
         } catch (SQLException ex) {
             throw new SmthGoneWrongException(ex.getMessage());
         }

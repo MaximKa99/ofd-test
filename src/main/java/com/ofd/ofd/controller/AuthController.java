@@ -1,6 +1,7 @@
 package com.ofd.ofd.controller;
 
 import com.ofd.ofd.model.NewUser;
+import com.ofd.ofd.model.User;
 import com.ofd.ofd.service.JwtProvider;
 import com.ofd.ofd.service.Manager;
 import com.ofd.ofd.view.ViewAuthRequest;
@@ -30,18 +31,16 @@ public class AuthController {
 
     @PostMapping("/login")
     public ViewAuthResponse auth(@RequestBody ViewAuthRequest authRequest) {
-        manager.login(authRequest.getLogin(), authRequest.getPassword());
+        User user = manager.login(authRequest.getLogin(), authRequest.getPassword());
         String token = provider.generateToken(authRequest.getLogin());
-        String id = manager.findUserByLogin(authRequest.getLogin()).getId();
-        return new ViewAuthResponse(token, id);
+        return new ViewAuthResponse(token, user.getId());
     }
 
     @PostMapping("/register")
-    public ResponseEntity<ViewNewUser> registNewUser(@RequestBody ViewLoginForm viewLoginForm) {
-        NewUser newUser = new NewUser();
-        newUser.setLogin(viewLoginForm.getLogin());
-        newUser.setPassword(viewLoginForm.getPassword());
-        int id = manager.addNewUser(newUser);
-        return new ResponseEntity<>(new ViewNewUser(id), HttpStatus.OK);
+    public ViewAuthResponse registNewUser(@RequestBody ViewLoginForm viewLoginForm) {
+        NewUser newUser = new NewUser(viewLoginForm.getLogin(), viewLoginForm.getPassword());
+        User user = manager.addNewUser(newUser);
+        String token = provider.generateToken(newUser.getLogin());
+        return new ViewAuthResponse(token, user.getId());
     }
 }
