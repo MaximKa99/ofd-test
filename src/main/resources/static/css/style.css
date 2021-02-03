@@ -1,0 +1,29 @@
+body {
+    background-color: rgb(245, 245, 207);
+}
+
+.headerStyle {
+    background-color: rgb(186, 223, 157);
+    text-decoration: none;
+    overflow: hidden;
+}
+
+.linkStyle {
+    font-size:xx-large;
+    float: left;
+    margin-left: 10px;
+    text-decoration: none;
+}
+
+.balance {
+    font-size: xx-large;
+}
+
+.loginForm {
+    margin-top: 10%;
+    margin-left: 45%;
+    padding: 10px;
+    background-color: rgb(55, 0, 255);
+    width: 10%;
+    height: 10%;
+}
